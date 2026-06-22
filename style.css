@@ -1,0 +1,80 @@
+/* ESTILOS GLOBAIS */
+/* Reset básico e centralização do conteúdo na página */
+body {
+    margin: 0; /* Remove margens padrão do navegador */
+    padding: 0; /* Remove preenchimento padrão do navegador */
+    height: 100vh; /* Altura igual à viewport (100% da tela) */
+    display: flex; /* Ativa o modelo de layout flexível */
+    justify-content: center; /* Centraliza horizontalmente o conteúdo */
+    align-items: center; /* Centraliza verticalmente o conteúdo */
+    font-family: sans-serif; /* Define uma fonte sem serifa como padrão */
+}
+
+/* CARTÃO PRINCIPAL */
+/* Container principal que funciona como cartão */
+.card {
+    position: relative; /* Permite que elementos filhos com position: absolute sejam posicionados em relação a este container */
+    width: 400px; /* Largura fixa de 400 pixels */
+    height: 400px; /* Altura fixa de 400 pixels (formato quadrado) */
+    background-color: black; /* Cor de fundo preta (será visível quando a imagem não cobrir totalmente) */
+}
+
+/* CONTEÚDO DO CARTÃO */
+/* Camada de conteúdo (texto e botão) que fica SOBRE a imagem */
+.content {
+    position: absolute; /* Posiciona o conteúdo de forma absoluta dentro do .card */
+    width: 60%; /* Largura de 60% do cartão (240px) */
+    top: 50%; /* Alinha no centro vertical do cartão */
+    left: 50%; /* Alinha no centro horizontal do cartão */
+    transform: translate(-50%, -50%); /* Corrige o deslocamento para centralizar perfeitamente */
+    color: white; /* Texto branco (contrasta com o fundo preto) */
+    text-align: center; /* Centraliza todo o texto horizontalmente */
+}
+
+/* Estilo do título (h2) dentro do conteúdo */
+h2 {
+    margin-bottom: 20px; /* Espaçamento inferior de 20px para separar do parágrafo */
+    text-transform: capitalize; /* Transforma a primeira letra de cada palavra em maiúscula */
+}
+
+/* Estilo do parágrafo dentro do conteúdo */
+p {
+    margin-bottom: 30px; /* Espaçamento inferior de 30px para separar do botão */
+    text-transform: capitalize; /* Transforma a primeira letra de cada palavra em maiúscula */
+}
+
+/* BOTÃO */
+/* Estilo do link que age como botão */
+a {
+    display: inline-block; /* Permite aplicar padding e dimensões ao link (que é inline por padrão) */
+    padding: 10px 10px; /* Preenchimento interno de 10px em todas as direções */
+    border: 1px solid white; /* Borda branca de 1px de espessura */
+    text-decoration: none; /* Remove o sublinhado padrão dos links */
+    color: white; /* Texto branco */
+    transition: 0.5s; /* Animação suave de 0.5 segundos para todas as propriedades que mudarem */
+    text-transform: capitalize; /* Transforma a primeira letra de cada palavra em maiúscula */
+}
+
+/* Efeito hover no botão (quando o mouse passa por cima) */
+a:hover {
+    color: black; /* Texto muda para preto */
+    background-color: white; /* Fundo muda para branco (inverte as cores) */
+}
+
+/* IMAGEM (EFEITO DE REVELAÇÃO) */
+/* Estilo da imagem que cobre todo o cartão */
+img {
+    position: absolute; /* Posiciona a imagem de forma absoluta dentro do .card */
+    top: 0; /* Alinha no topo do cartão */
+    left: 0; /* Alinha na esquerda do cartão */
+    width: 100%; /* Ocupa 100% da largura do cartão */
+    height: 100%; /* Ocupa 100% da altura do cartão */
+    object-fit: cover; /* Ajusta a imagem para cobrir todo o espaço sem distorcer (corta se necessário) */
+    transition: 0.5s; /* Animação suave de 0.5 segundos para todas as propriedades que mudarem */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); /* Define o recorte inicial da imagem (TOTALMENTE VISÍVEL) */
+}
+
+/* Efeito hover na imagem (quando o mouse passa por cima) */
+img:hover {
+    clip-path: polygon(100% 100%, 100% 0, 100% 100%, 0% 100%); /* NOVO recorte: faz a imagem desaparecer e revelar o texto por trás */
+}
